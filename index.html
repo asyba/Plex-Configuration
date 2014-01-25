@@ -42,6 +42,120 @@
                         <input class="btn btn-lg btn-primary btn-block" id="save" type="submit" value="Save"/>
               </form>
           </div>
+        </div>
+        
+        
+        <script type="text/javascript">
+                function make_base_auth(user, password) {
+                          var tok = user + ':' + password;
+                          var hash = btoa(tok);
+                          
+                          return "Basic " + hash;
+                }
+                $().ready(function () {
+                        $("#getClients").click(function(){
+                                $.ajax({
+                                        "url" : "http://" + $("#plexServer").val() + ":32400/clients",
+                                        "dataType" : "xml",
+                                        "type" : "GET",
+                                        "statusCode": {
+                                                401: function() {
+                                                        $("#configure-form").addClass("hide");
+                                                        $("#login-form").removeClass("hide");
+                                                        $("#username").focus();
+                                                }
+                                        },
+                                        "beforeSend": function (xhr) {
+                                                    xhr.setRequestHeader("X-Plex-Token", localStorage.getItem("plexToken"));
+                                                xhr.setRequestHeader("X-Plex-Device", "Pebble");
+                                                xhr.setRequestHeader("X-Plex-Model", "V2R2");
+                                                xhr.setRequestHeader("X-Plex-Client-Identifier", "V2R2");
+                                                xhr.setRequestHeader("X-Plex-Device-Name", "pebble-plex-remote");
+                                                xhr.setRequestHeader("X-Plex-Platform", "PebbleOS");
+                                                xhr.setRequestHeader("X-Plex-Client-Platform", "PebbleOS");
+                                                xhr.setRequestHeader("X-Plex-Platform-Version", "2.0B2");
+                                                xhr.setRequestHeader("X-Plex-Product", "pebble-plex-remote");
+                                                xhr.setRequestHeader("X-Plex-Version", "1.0");
+                                        },
+                                        "success" : function (data) {
+                                                $("#clientSelect").empty();
+                                                something = $(data).find("Server");
+                                                var $clients = $(data).find("Server");
+                                                $.each($clients, function (i,item) {
+                                                        var client = $("<option>", {
+                                                                "value" : $(item).attr("host"),
+                                                                "html" : $(item).attr("name") + " (" + $(item).attr("host") +")"
+                                                        }).appendTo($("#plexClient"));
+                                                });
+                                                $("#clientSelect").focus();
+                                        },
+                                        "error" : function (jqXHR, textStatus, errorThrown) {
+
+                                        }
+
+                                });
+                        });
+
+                });
+
+                $("#plexServer").val(localStorage.getItem("plexServer"));
+                $("#plexClient").val(localStorage.getItem("plexClient"));
+                $("#configure-form").submit(function(e) {
+                        var s = $("#plexServer").val();
+                        var c = $("#plexClient").val();
+
+                        var j = {
+                                plexServer : s,
+                                plexClient : c
+                        };
+
+                        if (localStorage.getItem("plexToken")) {
+                                j.plexToken = localStorage.getItem("plexToken");
+                        }
+
+                    localStorage.setItem("plexServer", s);  
+                        localStorage.setItem("plexClient", c); 
+
+                        window.location.href = "pebblejs://close#" + JSON.stringify(j);
+
+                        e.preventDefault();
+                });
+                $("#login-form").submit(function(e) {
+                        var username = $("#username").val();
+                        var password = $("#password").val();
+                        e.preventDefault();
+                        $.ajax({
+                                "url" : "https://my.plexapp.com/users/sign_in.xml",
+                                "type" : "POST",
+                                "dataType" : "xml",
+                                "beforeSend": function (xhr) {
+                                            xhr.setRequestHeader("Authorization", make_base_auth(username,password));
+                                        xhr.setRequestHeader("X-Plex-Device", "Pebble");
+                                        xhr.setRequestHeader("X-Plex-Model", "V2R2");
+                                        xhr.setRequestHeader("X-Plex-Client-Identifier", "V2R2");
+                                        xhr.setRequestHeader("X-Plex-Device-Name", "pebble-plex-remote");
+                                        xhr.setRequestHeader("X-Plex-Platform", "PebbleOS");
+                                        xhr.setRequestHeader("X-Plex-Client-Platform", "PebbleOS");
+                                        xhr.setRequestHeader("X-Plex-Platform-Version", "2.0B2");
+                                        xhr.setRequestHeader("X-Plex-Product", "pebble-plex-remote");
+                                        xhr.setRequestHeader("X-Plex-Version", "1.0");
+                                },
+                                "success" : function (data) {
+                                        var token = $(data).find("authentication-token").text();
+                                        console.log("Setting Plex Token: " + token)
+                                        localStorage.setItem("plexToken", token);
+
+                                        $("#login-form").addClass("hide");
+                                        $("#configure-form").removeClass("hide");
+                                        $("#getClients").click();
+                                }
+                        });
+
+                        
+                });
+
+        
+</script>
       
       
   </body>
