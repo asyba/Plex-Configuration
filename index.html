@@ -93,7 +93,8 @@
                                                 var $clients = $(data).find("Server");
                                                 $.each($clients, function (i,item) {
                                                         var client = $("<option>", {
-                                                                "value" : $(item).attr("host"), $(item).attr("port"),
+                                                                "value" : $(item).attr("host"), 
+                                                                //$(item).attr("port"),
                                                                 //"value" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
                                                         }).appendTo($("#plexClient"));
