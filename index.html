@@ -96,6 +96,14 @@
                                                                 "value" : $(item).attr("host"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
                                                         }).appendTo($("#plexClient"));
+                                                        
+                                                        var client1 = $("<option>", {
+                                                                "value" : $(item).attr("port"),
+                                                                "html" : $(item).attr("port") + " (" + $(item).attr("host") +")" + $(item).attr("name")
+                                                        }).appendTo($("#plexClientPort"));
+                                                        
+                                                        
+                                                        
                                                 });
                                                 $("#clientSelect").focus();
                                                 
