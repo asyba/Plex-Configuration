@@ -94,7 +94,7 @@
                                                 $.each($clients, function (i,item) {
                                                         var client = $("<option>", {
                                                                 "value" : $(item).attr("host"),
-                                                                "html" : $(item).attr("name") + " (" + $(item).attr("host") +")"
+                                                                "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
                                                         }).appendTo($("#plexClient"));
                                                 });
                                                 $("#clientSelect").focus();
