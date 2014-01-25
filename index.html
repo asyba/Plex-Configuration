@@ -34,6 +34,7 @@
                         <div class="form-group">
                                 <label for="plexServer">Plex Server</label>
                                 <input type="text" id="plexServer" name="plexServer" class="form-control" placeholder="192.168.1.117"/>
+                                <input type="hidden" id="plexClientPort" placeholder="0" />
                                 </div>        
                                 <p class="help-block">Enter a hostname or IP address of a Plex Server before selecting a Plex Client.</p>
                                 <input class="btn btn-lg btn-info btn-block" id="getClients" value="Get Clients" />
@@ -52,6 +53,7 @@
         
         
         <script type="text/javascript">
+                var port="0";
                 /*
                 function make_base_auth(user, password) {
                           var tok = user + ':' + password;
@@ -96,6 +98,15 @@
                                                         }).appendTo($("#plexClient"));
                                                 });
                                                 $("#clientSelect").focus();
+                                                
+                                                
+                                                $.each($clients, function (i,item) {
+                                                        var client = $("<option>", {
+                                                                "value" : $(item).attr("port"),
+                                                                "html" : $(item).attr("name") + " (" + $(item).attr("port") +")"
+                                                        }).appendTo($("#plexClientPort"));
+                                                });
+
                                         },
                                         "error" : function (jqXHR, textStatus, errorThrown) {
 
@@ -108,9 +119,12 @@
 
                 $("#plexServer").val(localStorage.getItem("plexServer"));
                 $("#plexClient").val(localStorage.getItem("plexClient"));
+                $("#plexClientPort").val(localStorage.getItem("plexClientPort"));
+                
                 $("#configure-form").submit(function(e) {
                         var s = $("#plexServer").val();
                         var c = $("#plexClient").val();
+                        var p = $("#plexClientPort").val();
                         /*
                         var j = {
                                 plexServer : s,
@@ -122,7 +136,8 @@
                         }
                         */
                     localStorage.setItem("plexServer", s);  
-                    localStorage.setItem("plexClient", c); 
+                    localStorage.setItem("plexClient", c);
+                    localStorage.setItem("plexClientPort", p); 
 
                         window.location.href = "pebblejs://close#" + JSON.stringify(j);
 
