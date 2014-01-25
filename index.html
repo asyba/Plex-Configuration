@@ -34,7 +34,7 @@
                         <div class="form-group">
                                 <label for="plexServer">Plex Server</label>
                                 <input type="text" id="plexServer" name="plexServer" class="form-control" placeholder="192.168.1.117"/>
-                                <input type="hidden" id="plexClientPort" placeholder="0" />
+                                <input type="hidden" id="plexClientPort" value="0" placeholder="0" />
                                 </div>        
                                 <p class="help-block">Enter a hostname or IP address of a Plex Server before selecting a Plex Client.</p>
                                 <input class="btn btn-lg btn-info btn-block" id="getClients" value="Get Clients" />
@@ -93,16 +93,17 @@
                                                 var $clients = $(data).find("Server");
                                                 $.each($clients, function (i,item) {
                                                         var client = $("<option>", {
-                                                                //"value" : $(item).attr("host"),
-                                                                "value" : $(item).attr("port"),
+                                                                "value" : $(item).attr("host"), $(item).attr("port"),
+                                                                //"value" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
                                                         }).appendTo($("#plexClient"));
-                                                        
+                                                        var port = $
+                                                        /*
                                                         var client1 = $("<option>", {
                                                                 "value" : $(item).attr("port"),
                                                                 "html" : $(item).attr("port") + " (" + $(item).attr("host") +")" + $(item).attr("name")
                                                         }).appendTo($("#plexClientPort"));
-                                                        
+                                                        */
                                                         
                                                         
                                                 });
