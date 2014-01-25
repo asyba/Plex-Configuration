@@ -93,7 +93,8 @@
                                                 var $clients = $(data).find("Server");
                                                 $.each($clients, function (i,item) {
                                                         var client = $("<option>", {
-                                                                "value" : $(item).attr("host"),
+                                                                //"value" : $(item).attr("host"),
+                                                                "value" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
                                                         }).appendTo($("#plexClient"));
                                                         
@@ -105,6 +106,7 @@
                                                         
                                                         
                                                 });
+                                                /*
                                                 $("#clientSelect").focus();
                                                 
                                                 
@@ -114,6 +116,7 @@
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("port") +")"
                                                         }).appendTo($("#plexClientPort"));
                                                 });
+                                                */
 
                                         },
                                         "error" : function (jqXHR, textStatus, errorThrown) {
