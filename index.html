@@ -43,7 +43,7 @@
                                 <label for="plexClient">Plex Client</label>
                                 
                                 <select id="plexClient" name="plexClient" class="form-control">
-                                        <option value="" selected>Select a Client</option>
+                                        <option value="" value2="" selected>Select a Client</option>
                                 </select>
                         </div>
                         <input class="btn btn-lg btn-primary btn-block" id="save" type="submit" value="Save"/>
@@ -95,7 +95,7 @@
                                                         var client = $("<option>", {
                                                                 "value" : $(item).attr("host"), 
                                                                 //$(item).attr("port"),
-                                                                "value1" : $(item).attr("port"),
+                                                                "value2" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
                                                         }).appendTo($("#plexClient"));
                                                         
