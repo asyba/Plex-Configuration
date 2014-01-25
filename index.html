@@ -20,6 +20,30 @@
       </div>
       
       
+      <div class="container">
+                <div class="configure">
+                        <h2>Configure</h2>
+                    <form id="configure-form" class="form-configure well" action="#" method="POST">
+                            <h3>Server</h3>
+                        <div class="form-group">
+                                <label for="plexServer">Plex Server</label>
+                                <input type="text" id="plexServer" name="plexServer" class="form-control" placeholder="192.168.1.117"/>
+                                </div>        
+                                <p class="help-block">Enter a hostname or IP address of a Plex Server before selecting a Plex Client.</p>
+                                <input class="btn btn-lg btn-info btn-block" id="getClients" value="Get Clients"/>
+                                <br/>
+                                <div class="form-group">
+                                <label for="plexClient">Plex Client</label>
+                                
+                                <select id="plexClient" name="plexClient" class="form-control">
+                                        <option value="" selected>Select a Client</option>
+                                </select>
+                        </div>
+                        <input class="btn btn-lg btn-primary btn-block" id="save" type="submit" value="Save"/>
+              </form>
+          </div>
+      
+      
   </body>
 </html>
 
