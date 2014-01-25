@@ -52,12 +52,14 @@
         
         
         <script type="text/javascript">
+                /*
                 function make_base_auth(user, password) {
                           var tok = user + ':' + password;
                           var hash = btoa(tok);
                           
                           return "Basic " + hash;
                 }
+                */
                 $().ready(function () {
                         $("#getClients").click(function(){
                                 $.ajax({
@@ -109,7 +111,7 @@
                 $("#configure-form").submit(function(e) {
                         var s = $("#plexServer").val();
                         var c = $("#plexClient").val();
-
+                        /*
                         var j = {
                                 plexServer : s,
                                 plexClient : c
@@ -118,14 +120,16 @@
                         if (localStorage.getItem("plexToken")) {
                                 j.plexToken = localStorage.getItem("plexToken");
                         }
-
+                        */
                     localStorage.setItem("plexServer", s);  
-                        localStorage.setItem("plexClient", c); 
+                    localStorage.setItem("plexClient", c); 
 
                         window.location.href = "pebblejs://close#" + JSON.stringify(j);
 
                         e.preventDefault();
                 });
+                
+                /*
                 $("#login-form").submit(function(e) {
                         var username = $("#username").val();
                         var password = $("#password").val();
@@ -159,6 +163,7 @@
 
                         
                 });
+                */
 
         
 </script>
