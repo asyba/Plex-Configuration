@@ -46,14 +46,16 @@
                                 <label for="plexClient">Plex Client 1</label>
                                 
                                 <select id="plexClient" name="plexClient" class="form-control">
-                                        <option value=""  selected>Select a Client 1</option>
+                                        <option id="a1" value=""  selected>Select a Client 1</option>
+                                        <option id="a2" value=""  selected>Select a Client 2</option>
                                 </select>
                                 
-                                
+                                <!--
                                 <label for="plexClient2">Plex Client 2</label>
                                 <select id="plexClient2" name="plexClient2" class="form-control">
                                         <option value=""  selected>Select a Client 2</option>
                                 </select>
+                                //-->
                                 
                         </div>
                         <input class="btn btn-lg btn-primary btn-block" id="save" type="submit" value="Save"/>
@@ -101,7 +103,7 @@
                                                 something = $(data).find("Server");
                                                 var $clients = $(data).find("Server");
                                                 $.each($clients, function (i,item) {
-                                                        var client = $("<option>", {
+                                                        var client = $("#a1", {
                                                                 "value" :  $(item).attr("host") + "-" + $(item).attr("port") ,
                                                                 //$(item).attr("port"),
                                                                 //"value2" : $(item).attr("port"),
