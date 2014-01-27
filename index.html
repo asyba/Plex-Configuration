@@ -104,7 +104,7 @@
                                                 something = $(data).find("Server");
                                                 var $clients = $(data).find("Server");
                                                 $.each($clients, function (i,item) {
-                                                        var client = $("#a1", {
+                                                        var client = $("<option id='a1'>", {
                                                                 "value" :  $(item).attr("host") + "-" + $(item).attr("port") ,
                                                                 //$(item).attr("port"),
                                                                 //"value2" : $(item).attr("port"),
