@@ -36,6 +36,7 @@
                                 <label for="plexServer">Plex Server</label>
                                 <input type="text" id="plexServer" name="plexServer" class="form-control" placeholder="192.168.1.117"/>
                                 <input type="hidden" id="plexClientPort" value="0" placeholder="0" />
+                                <input type="hidden" id="plexClientPort2" value="0" placeholder="0" />
                                 </div>        
                                 <p class="help-block">Enter a hostname or IP address of a Plex Server before selecting a Plex Client.</p>
                                 <input  id="getClients" type=button value="Get Clients" onclick="" />
@@ -48,12 +49,12 @@
                                         <option value=""  selected>Select a Client 1</option>
                                 </select>
                                 
-                                <!--
+                                
                                 <label for="plexClient2">Plex Client 2</label>
                                 <select id="plexClient2" name="plexClient2" class="form-control">
                                         <option value=""  selected>Select a Client 2</option>
                                 </select>
-                                //-->
+                                
                         </div>
                         <input class="btn btn-lg btn-primary btn-block" id="save" type="submit" value="Save"/>
               </form>
@@ -160,16 +161,16 @@
                 $("#plexClient").val(localStorage.getItem("plexClient"));
                 $("#plexClientPort").val(localStorage.getItem("plexClientPort"));
                 
-                //$("#plexClient2").val(localStorage.getItem("plexClient2"));
-                //$("#plexClientPort2").val(localStorage.getItem("plexClientPort2"));
+                $("#plexClient2").val(localStorage.getItem("plexClient2"));
+                $("#plexClientPort2").val(localStorage.getItem("plexClientPort2"));
                 
                 $("#configure-form").submit(function(e) {
                         var s = $("#plexServer").val();
                         var c = $("#plexClient").val();
                         var p = $("#plexClientPort").val();
                         
-                        //var c2 = $("#plexClient2").val();
-                        //var p2 = $("#plexClientPort2").val();
+                        var c2 = $("#plexClient2").val();
+                        var p2 = $("#plexClientPort2").val();
                         
           
                         var cc = c.split('-'); 
@@ -185,8 +186,8 @@
                                 plexClient : c,
                                 plexClientPort : p
                                 
-                                //plexClient2 : c2,
-                                //plexClientPort2 : p2
+                                plexClient2 : c2,
+                                plexClientPort2 : p2
                         };
                         /*
                         if (localStorage.getItem("plexToken")) {
@@ -197,8 +198,8 @@
                     localStorage.setItem("plexClient", c);
                     localStorage.setItem("plexClientPort", p); 
                     
-                    //localStorage.setItem("plexClient", c2);
-                    //localStorage.setItem("plexClientPort", p2);
+                    localStorage.setItem("plexClient", c2);
+                    localStorage.setItem("plexClientPort", p2);
 
                         window.location.href = "pebblejs://close#" + JSON.stringify(j);
 
