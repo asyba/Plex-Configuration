@@ -104,14 +104,14 @@
                                                 something = $(data).find("Server");
                                                 var $clients = $(data).find("Server");
                                                 $.each($clients, function (i,item) {
-                                                        var client = $("<option id='a1'>", {
+                                                        var client = $("<option>",$("#a1", {
                                                                 "value" :  $(item).attr("host") + "-" + $(item).attr("port") ,
                                                                 //$(item).attr("port"),
                                                                 //"value2" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
                                                         }).appendTo($("#plexClient"));
                                                         
-                                                });       
+                                                }));       
                                                         /*
                                                         $("#clientSelect2").empty();
                                                          something1 = $(data).find("Server");
