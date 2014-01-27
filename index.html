@@ -107,6 +107,22 @@
                                                                 //"value2" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
                                                         }).appendTo($("#plexClient"));
+                                                        
+                                                });       
+                                                        
+                                                        $("#clientSelect2").empty();
+                                                         something1 = $(data).find("Server");
+                                                         var $clients1 = $(data).find("Server");
+                                                         $.each($clients1, function (i,item) {
+                                                         var client = $("<option>", {
+                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") ,
+                                                                //$(item).attr("port"),
+                                                                //"value2" : $(item).attr("port"),
+                                                                "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
+                                                        }).appendTo($("#plexClient2"));
+                                                        
+                                                        
+                                               
  
                                                         /*
                                                         var client1 = $("<option>", {
@@ -131,6 +147,7 @@
 
                                         },
                                         
+                                        /*
                                         "success" : function (data) {
                                         $("#clientSelect2").empty();
                                                 something = $(data).find("Server");
@@ -147,6 +164,7 @@
                                                 });  
                                                         
                                        }, 
+                                       */
                                        
                                         "error" : function (jqXHR, textStatus, errorThrown) {
 
