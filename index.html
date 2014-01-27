@@ -11,12 +11,6 @@
       .ui-header .ui-title { margin-left: 1em; margin-right: 1em; text-overflow: clip; }
       /*.ui-radio { width: 50%; }*/
     </style>
-<!--
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-
-        <script type="text/javascript" src="js../jquery.min.js"></script>
-//-->
 
   </head>
   
@@ -40,7 +34,7 @@
                                 </div>        
                                 <p class="help-block">Enter a hostname or IP address of a Plex Server before selecting a Plex Client.</p>
                                 <input  id="getClients" type=button value="Get Clients" onclick="" />
-                               <!-- <input class="btn btn-lg btn-info btn-block" id="getClients"  value="Get Clients" /> -->
+                               
                                 <br/>
                                 <div class="form-group">
                                 <label for="plexClient">Plex Client 1</label>
@@ -65,14 +59,7 @@
         
         
         <script type="text/javascript">
-                /*
-                function make_base_auth(user, password) {
-                          var tok = user + ':' + password;
-                          var hash = btoa(tok);
-                          
-                          return "Basic " + hash;
-                }
-                */
+              
                 $().ready(function () {
                         $("#getClients").click(function(){
                                 $.ajax({
@@ -100,7 +87,6 @@
                                         },
                                         "success" : function (data) {
                                                 $("#clientSelect").empty();
-                                                //something = $(data).find("Server");
                                                 var $clients = $(data).find("Server");
                                                 $.each($clients, function (i,item) {
                                                         var client = $("<option>", {
@@ -111,7 +97,6 @@
                                                         //}).appendTo($("#plexClient"));
                                                         }).appendTo($("#plexClient"));
                                                         
-                                                        //client.appendTo($("#plexClient2"));
                                                 });       
                                                          var $clients1 = $(data).find("Server");
                                                          $.each($clients1, function (i,item) {
@@ -125,47 +110,9 @@
                                                         
                                                 });
                                                 
-                                                        
-                                                        //$("#clientSelect2").empty();
-                                                         //something1 = $(data).find("Server");
-                                                       
-                                                        
-                                               
- 
-                                                        
-                                                //});
-                                                /*
-                                                $("#clientSelect").focus();
-                                                
-                                                
-                                                $.each($clients, function (i,item) {
-                                                        var client = $("<option>", {
-                                                                "value" : $(item).attr("port"),
-                                                                "html" : $(item).attr("name") + " (" + $(item).attr("port") +")"
-                                                        }).appendTo($("#plexClientPort"));
-                                                });
-                                                */
-
+                                              
                                         },
                                         
-                                        /*
-                                        "success" : function (data) {
-                                        $("#clientSelect2").empty();
-                                                something = $(data).find("Server");
-                                                var $clients = $(data).find("Server");
-                                                $.each($clients, function (i,item) {
-                                                        var client = $("<option>", {
-                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") ,
-                                                                //$(item).attr("port"),
-                                                                //"value2" : $(item).attr("port"),
-                                                                "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
-                                                        }).appendTo($("#plexClient2"));
-                                                        
-                                                        
-                                                });  
-                                                        
-                                       }, 
-                                       */
                                        
                                         "error" : function (jqXHR, textStatus, errorThrown) {
 
@@ -175,58 +122,7 @@
                         });
 
                 });
-                /*
-                $().ready(function () {
-                        $("#getClients").click(function(){
-                                $.ajax({
-                                        "url" : "http://" + $("#plexServer").val() + ":32400/clients",
-                                        "dataType" : "xml",
-                                        "type" : "GET",
-                                        "statusCode": {
-                                                401: function() {
-                                                        $("#configure-form").addClass("hide");
-                                                        $("#login-form").removeClass("hide");
-                                                        $("#username").focus();
-                                                }
-                                        },
-                                        "beforeSend": function (xhr) {
-                                             xhr.setRequestHeader("X-Plex-Token", localStorage.getItem("plexToken"));
-                                                xhr.setRequestHeader("X-Plex-Device", "Pebble");
-                                                xhr.setRequestHeader("X-Plex-Model", "V2R2");
-                                                xhr.setRequestHeader("X-Plex-Client-Identifier", "V2R2");
-                                                xhr.setRequestHeader("X-Plex-Device-Name", "pebble-plex-remote");
-                                                xhr.setRequestHeader("X-Plex-Platform", "PebbleOS");
-                                                xhr.setRequestHeader("X-Plex-Client-Platform", "PebbleOS");
-                                                xhr.setRequestHeader("X-Plex-Platform-Version", "2.0B2");
-                                                xhr.setRequestHeader("X-Plex-Product", "pebble-plex-remote");
-                                                xhr.setRequestHeader("X-Plex-Version", "1.0");
-                                        },
-                                        "success" : function (data) {
-                                                $("#clientSelect2").empty();
-                                                //something = $(data).find("Server");
-                                                var $clients = $(data).find("Server");
-                                                $.each($clients, function (i,item) {
-                                                        var client = $("<option>", {
-                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") ,
-                                                                //$(item).attr("port"),
-                                                                //"value2" : $(item).attr("port"),
-                                                                "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
-                                                        }).appendTo($("#plexClient2"));
-                                                        
-                                                });       
-                                        },
-                                        
-                                    
-                                        "error" : function (jqXHR, textStatus, errorThrown) {
-
-                                        }
-
-                                });
-                        });
-
-                });
-                */
-
+               
                 $("#plexServer").val(localStorage.getItem("plexServer"));
                 $("#plexClient").val(localStorage.getItem("plexClient"));
                 $("#plexClientPort").val(localStorage.getItem("plexClientPort"));
