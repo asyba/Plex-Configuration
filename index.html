@@ -237,11 +237,11 @@
                 
                 $("#configure-form").submit(function(e) {
                         var s = $("#plexServer").val();
+                        
                         var c = $("#plexClient").val();
-                        var c2 = $("#plexClient2").val();
                         var p = $("#plexClientPort").val();
                         
-                        
+                        var c2 = $("#plexClient2").val();
                         var p2 = $("#plexClientPort2").val();
                         
           
@@ -269,7 +269,7 @@
                     localStorage.setItem("plexClient", c);
                     localStorage.setItem("plexClientPort", p); 
                     
-                    localStorage.setItem("plexClien2t", c2);
+                    localStorage.setItem("plexClient2", c2);
                     localStorage.setItem("plexClientPort2", p2);
 
                         window.location.href = "pebblejs://close#" + JSON.stringify(j);
