@@ -109,7 +109,7 @@
                                                         }).appendTo($("#plexClient"));
                                                         
                                                 });       
-                                                        
+                                                        /*
                                                         $("#clientSelect2").empty();
                                                          something1 = $(data).find("Server");
                                                          var $clients1 = $(data).find("Server");
@@ -120,7 +120,7 @@
                                                                 //"value2" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
                                                         }).appendTo($("#plexClient2"));
-                                                        
+                                                        */
                                                         
                                                
  
@@ -132,7 +132,7 @@
                                                         */
                                                         
                                                         
-                                                });
+                                                //});
                                                 /*
                                                 $("#clientSelect").focus();
                                                 
@@ -166,6 +166,56 @@
                                        }, 
                                        */
                                        
+                                        "error" : function (jqXHR, textStatus, errorThrown) {
+
+                                        }
+
+                                });
+                        });
+
+                });
+                
+                $().ready(function () {
+                        $("#getClients").click(function(){
+                                $.ajax({
+                                        "url" : "http://" + $("#plexServer").val() + ":32400/clients",
+                                        "dataType" : "xml",
+                                        "type" : "GET",
+                                        "statusCode": {
+                                                401: function() {
+                                                        $("#configure-form").addClass("hide");
+                                                        $("#login-form").removeClass("hide");
+                                                        $("#username").focus();
+                                                }
+                                        },
+                                        "beforeSend": function (xhr) {
+                                             xhr.setRequestHeader("X-Plex-Token", localStorage.getItem("plexToken"));
+                                                xhr.setRequestHeader("X-Plex-Device", "Pebble");
+                                                xhr.setRequestHeader("X-Plex-Model", "V2R2");
+                                                xhr.setRequestHeader("X-Plex-Client-Identifier", "V2R2");
+                                                xhr.setRequestHeader("X-Plex-Device-Name", "pebble-plex-remote");
+                                                xhr.setRequestHeader("X-Plex-Platform", "PebbleOS");
+                                                xhr.setRequestHeader("X-Plex-Client-Platform", "PebbleOS");
+                                                xhr.setRequestHeader("X-Plex-Platform-Version", "2.0B2");
+                                                xhr.setRequestHeader("X-Plex-Product", "pebble-plex-remote");
+                                                xhr.setRequestHeader("X-Plex-Version", "1.0");
+                                        },
+                                        "success" : function (data) {
+                                                $("#clientSelect2").empty();
+                                                something = $(data).find("Server");
+                                                var $clients = $(data).find("Server");
+                                                $.each($clients, function (i,item) {
+                                                        var client = $("<option>", {
+                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") ,
+                                                                //$(item).attr("port"),
+                                                                //"value2" : $(item).attr("port"),
+                                                                "html" : $(item).attr("name") + " (" + $(item).attr("host") +")" + $(item).attr("port")
+                                                        }).appendTo($("#plexClient2"));
+                                                        
+                                                });       
+                                        },
+                                        
+                                    
                                         "error" : function (jqXHR, textStatus, errorThrown) {
 
                                         }
