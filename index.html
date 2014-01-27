@@ -46,7 +46,7 @@
                                 <label for="plexClient">Plex Client 1</label>
                                 
                                 <select id="plexClient" name="plexClient" class="form-control">
-                                        <option id="a1" value=""  selected>Select a Client 1</option>
+                                        <option value=""  selected>Select a Client 1</option>
                                         <!-- <option id="a2" value=""  selected>Select a Client 2</option> -->
                                         
                                 </select>
@@ -259,6 +259,7 @@
                         
                         //alert("cl:"+c);
                         //alert("c2:"+c2);
+                        
                         var j = {
                                 plexServer : s,
                                 plexClient : c,
@@ -266,11 +267,7 @@
                                 plexClient2 : c2,
                                 plexClientPort2 : p2
                         };
-                        /*
-                        if (localStorage.getItem("plexToken")) {
-                                j.plexToken = localStorage.getItem("plexToken");
-                        }
-                        */
+                        
                     localStorage.setItem("plexServer", s);  
                     localStorage.setItem("plexClient", c);
                     localStorage.setItem("plexClientPort", p); 
@@ -283,43 +280,6 @@
                         e.preventDefault();
                 });
                 
-                /*
-                $("#login-form").submit(function(e) {
-                        var username = $("#username").val();
-                        var password = $("#password").val();
-                        e.preventDefault();
-                        $.ajax({
-                                "url" : "https://my.plexapp.com/users/sign_in.xml",
-                                "type" : "POST",
-                                "dataType" : "xml",
-                                "beforeSend": function (xhr) {
-                                            xhr.setRequestHeader("Authorization", make_base_auth(username,password));
-                                        xhr.setRequestHeader("X-Plex-Device", "Pebble");
-                                        xhr.setRequestHeader("X-Plex-Model", "V2R2");
-                                        xhr.setRequestHeader("X-Plex-Client-Identifier", "V2R2");
-                                        xhr.setRequestHeader("X-Plex-Device-Name", "pebble-plex-remote");
-                                        xhr.setRequestHeader("X-Plex-Platform", "PebbleOS");
-                                        xhr.setRequestHeader("X-Plex-Client-Platform", "PebbleOS");
-                                        xhr.setRequestHeader("X-Plex-Platform-Version", "2.0B2");
-                                        xhr.setRequestHeader("X-Plex-Product", "pebble-plex-remote");
-                                        xhr.setRequestHeader("X-Plex-Version", "1.0");
-                                },
-                                "success" : function (data) {
-                                        var token = $(data).find("authentication-token").text();
-                                        console.log("Setting Plex Token: " + token)
-                                        localStorage.setItem("plexToken", token);
-
-                                        $("#login-form").addClass("hide");
-                                        $("#configure-form").removeClass("hide");
-                                        $("#getClients").click();
-                                }
-                        });
-
-                        
-                });
-                */
-
-        
 </script>
       
       
