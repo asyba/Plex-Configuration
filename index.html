@@ -92,7 +92,7 @@
                                                 var $clients = $(data).find("Server");
                                                 $.each($clients, function (i,item) {
                                                         var client = $("<option>", {
-                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") + "-*" + $(item).attr("name") ,
+                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") + "-" + "+" + $(item).attr("name") ,
                                                                 //$(item).attr("port"),
                                                                 //"value2" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +") " + $(item).attr("port")
@@ -103,7 +103,7 @@
                                                          var $clients1 = $(data).find("Server");
                                                          $.each($clients1, function (i,item) {
                                                          var client1 = $("<option>", {
-                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") + "-*" + $(item).attr("name") ,
+                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") + "-" + "+" + $(item).attr("name") ,
                                                                 //$(item).attr("port"),
                                                                 //"value2" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +") " + $(item).attr("port")
@@ -138,10 +138,16 @@
                         var s = $("#plexServer").val();
                         
                         var c = $("#plexClient").val();
+                        
+                        var t = $("#plexClient").val();
+                        
                         var p = $("#plexClientPort").val();
                         var h = $("#plexClientHost").val();
                         
                         var c2 = $("#plexClient2").val();
+                        
+                        var t2 = $("#plexClient2").val();
+                         
                         var p2 = $("#plexClientPort2").val();
                         var h2 = $("#plexClientHost2").val();
                         
@@ -153,18 +159,24 @@
                         c=cc[0];
                         p=cc[1];
                         
-                        var gg = c.split('*');
+                        var gg = t.split('+');
                         h=gg[1];
+                        
+                        
+                        alert("c:"+c);
+                        alert("p"+p);
+                        alert("h"+h);
                         
                         var cc2 = c2.split('-'); 
                         c2=cc2[0];
                         p2=cc2[1];
                         
-                        var gg2 = c2.split('*');
+                        var gg2 = t2.split('+');
                         h2=gg2[1];
                         
-                        //alert("cl:"+c);
-                        //alert("c2:"+c2);
+                           alert("c:"+c2);
+                        alert("p"+p2);
+                        alert("h"+h2);
                         
                         var j = {
                                 plexServer : s,
