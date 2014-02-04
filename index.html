@@ -92,7 +92,7 @@
                                                 var $clients = $(data).find("Server");
                                                 $.each($clients, function (i,item) {
                                                         var client = $("<option>", {
-                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") + "-" + $(item).attr("name") ,
+                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") + "-*" + $(item).attr("name") ,
                                                                 //$(item).attr("port"),
                                                                 //"value2" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +") " + $(item).attr("port")
@@ -103,7 +103,7 @@
                                                          var $clients1 = $(data).find("Server");
                                                          $.each($clients1, function (i,item) {
                                                          var client1 = $("<option>", {
-                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") + "-" + $(item).attr("name") ,
+                                                                "value" :  $(item).attr("host") + "-" + $(item).attr("port") + "-*" + $(item).attr("name") ,
                                                                 //$(item).attr("port"),
                                                                 //"value2" : $(item).attr("port"),
                                                                 "html" : $(item).attr("name") + " (" + $(item).attr("host") +") " + $(item).attr("port")
@@ -152,12 +152,16 @@
                         var cc = c.split('-'); 
                         c=cc[0];
                         p=cc[1];
-                        h=cc[2];
+                        
+                        var gg = c.split('*');
+                        h=gg[1];
                         
                         var cc2 = c2.split('-'); 
                         c2=cc2[0];
                         p2=cc2[1];
-                        h2=cc2[2];
+                        
+                        var gg2 = c2.split('*');
+                        h2=gg2[1];
                         
                         //alert("cl:"+c);
                         //alert("c2:"+c2);
