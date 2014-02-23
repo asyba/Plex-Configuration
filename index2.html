@@ -23,10 +23,16 @@
                 <div class="configure">
                         <h2>Configure</h2>
                     <form id="configure-form" class="form-configure well" action="#" method="POST">
-                            <h3>Track Code 1</h3>
+                            <h3>Track Code </h3>
                         <div class="form-group">
-                                <label for="plexServer">Flight Track</label>
-                                <input type="text" id="plexServer" name="plexServer" class="form-control" placeholder="ARG1841"/>
+                                <label for="track1">Flight Track 1</label>
+                                <input type="text" id="track1" name="track1" class="form-control" placeholder="ARG1841"/>
+                                
+                                <label for="track2">Flight Track 2</label>
+                                <input type="text" id="track2" name="track2" class="form-control" placeholder="ARG1841"/>
+                                
+                                <label for="track3">Flight Track 3</label>
+                                <input type="text" id="track3" name="track3" class="form-control" placeholder="ARG1841"/>
        
                                 </div>        
                 
@@ -39,19 +45,27 @@
         <script type="text/javascript">
               
            
-                $("#plexServer").val(localStorage.getItem("plexServer"));
+                $("#track1").val(localStorage.getItem("track1"));
+                $("#track2").val(localStorage.getItem("track2"));
+                $("#track3").val(localStorage.getItem("track3"));
              
                 $("#configure-form").submit(function(e) {
-                        var s = $("#plexServer").val();
+                        var s1 = $("#track1").val();
+                        var s2 = $("#track2").val();
+                        var s3 = $("#track3").val();
                         
                 
                         var j = {
-                                plexServer : s
+                                  track1 : s1,
+                                  track2 : s2,
+                                  track3 : s3
                      
                         };
                         
-                    localStorage.setItem("plexServer", s);  
-                
+                    localStorage.setItem("track1", s1);
+                    localStorage.setItem("track2", s2);
+                    localStorage.setItem("track3", s3);
+               
 
                         window.location.href = "pebblejs://close#" + JSON.stringify(j);
 
