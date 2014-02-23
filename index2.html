@@ -1,1 +1,65 @@
-text
+<html>
+   <head>
+    <title>Flight Track</title>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href='http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css' />
+    <script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+    <script src='http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js'></script>
+    <style>
+      .ui-header .ui-title { margin-left: 1em; margin-right: 1em; text-overflow: clip; }
+      /*.ui-radio { width: 50%; }*/
+    </style>
+
+  </head>
+  
+  <body>
+    <div data-role='page' id='main'>
+      <div data-role='header' class='jqm-header' data-theme='a'>
+        <h1>Flight Track</h1>
+      </div>
+      
+      <div class="container">
+                <div class="configure">
+                        <h2>Configure</h2>
+                    <form id="configure-form" class="form-configure well" action="#" method="POST">
+                            <h3>Track Code 1</h3>
+                        <div class="form-group">
+                                <label for="plexServer">Flight Track</label>
+                                <input type="text" id="plexServer" name="plexServer" class="form-control" placeholder="ARG1841"/>
+       
+                                </div>        
+                
+                        <input class="btn btn-lg btn-primary btn-block" id="save" type="submit" value="Save"/>
+              </form>
+          </div>
+        </div>
+        
+        
+        <script type="text/javascript">
+              
+           
+                $("#plexServer").val(localStorage.getItem("plexServer"));
+             
+                $("#configure-form").submit(function(e) {
+                        var s = $("#plexServer").val();
+                        
+                
+                        var j = {
+                                plexServer : s
+                     
+                        };
+                        
+                    localStorage.setItem("plexServer", s);  
+                
+
+                        window.location.href = "pebblejs://close#" + JSON.stringify(j);
+
+                        e.preventDefault();
+                });
+                
+</script>
+      
+      
+  </body>
+</html>
