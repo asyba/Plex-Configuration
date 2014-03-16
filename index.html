@@ -63,7 +63,7 @@
                 $().ready(function () {
                         $("#getClients").click(function(){
                                 $.ajax({
-                                        "url" : "http://" + $("#plexServer").val() + ":32400/clients",
+                                        "url" : "http://" + $("#plexServer").val() + "/clients",
                                         "dataType" : "xml",
                                         "type" : "GET",
                                         "statusCode": {
