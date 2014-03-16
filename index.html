@@ -26,13 +26,13 @@
                             <h3>Server</h3>
                         <div class="form-group">
                                 <label for="plexServer">Plex Server</label>
-                                <input type="text" id="plexServer" name="plexServer" class="form-control" placeholder="192.168.1.117"/>
-                                <input type="hidden" id="plexClientPort" value="0" placeholder="0" />
-                                <input type="hidden" id="plexClientPort2" value="0" placeholder="0" />
-                                <input type="hidden" id="plexClientHost" value="0" placeholder="0" />
-                                <input type="hidden" id="plexClientHost2" value="0" placeholder="0" />
+                                <input type="text" id="plexServer" name="plexServer" class="form-control" placeholder="192.168.1.117:32400"/>
+                                <input type="hidden" id="plexClientPort" value="0" />
+                                <input type="hidden" id="plexClientPort2" value="0" />
+                                <input type="hidden" id="plexClientHost" value="0" />
+                                <input type="hidden" id="plexClientHost2" value="0" />
                                 </div>        
-                                <p class="help-block">Enter a hostname or IP address of a Plex Server before selecting a Plex Client.</p>
+                                <p class="help-block">Enter a hostname or IP address of a Plex Server before selecting a Plex Client (version 2.1.0 WatchApp only use IP - version 2.1.1 use IP:PORT usually is 32400 ).</p>
                                 <input  id="getClients" type=button value="Get Clients" onclick="" />
                                
                                 <br/>
@@ -40,7 +40,7 @@
                                 <label for="plexClient">Plex Client 1</label>
                                 <select id="plexClient" name="plexClient" class="form-control">
                                         <option value=""  selected>Select a Client 1</option>
-                                        <!-- <option id="a2" value=""  selected>Select a Client 2</option> -->
+                                       
                                         
                                 </select>
                                 
